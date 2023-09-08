@@ -30,6 +30,7 @@ gem 'haml-rails'
 group :development, :test do
   gem 'pry'
   gem 'dotenv-rails'
+  gem 'rspec-rails'
 end
 
 group :development do
