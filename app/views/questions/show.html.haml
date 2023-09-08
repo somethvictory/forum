@@ -1,0 +1,14 @@
+%nav{"aria-label" => "breadcrumb"}
+  %ol.breadcrumb
+    %li.breadcrumb-item
+      = link_to 'Home', root_path
+    %li.breadcrumb-item.active{"aria-current" => "page"}= @question.title
+%div
+  %h1= @question.title
+  %hr
+  %p= @question.body
+  %h3 Answers
+  %hr
+  - @question.answers.each do |answer|
+    %h5= "Answered By: #{answer.user.email}"
+    %p= answer.body
