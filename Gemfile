@@ -32,6 +32,8 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'rspec-rails'
   gem 'shoulda-matchers'
+  gem 'factory_bot_rails'
+  gem 'ffaker'
 end
 
 group :development do
