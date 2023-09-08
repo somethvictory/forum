@@ -4,9 +4,13 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = current_user.questions.create!(question_params)
+    @question = current_user.questions.new(question_params)
 
-    redirect_to root_path, question_id: @question.id
+    if @question.save
+      redirect_to root_path, question_id: @question.id
+    else
+      render :new
+    end
   end
 
   private
