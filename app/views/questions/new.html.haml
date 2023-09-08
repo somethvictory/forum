@@ -1,0 +1,15 @@
+%div.container
+  %h3.text-center
+    Forum
+
+  .well
+    = form_for @question do |f|
+      .mb-3
+        = f.label :title, class: 'form-label'
+        = f.text_field :title, class: 'form-control'
+        - binding.pry
+        = f.label :body, class: 'form-label'
+        = f.text_area :body, class: 'form-control', rows: 10
+        %br
+        = link_to 'Back', root_path, class: 'btn btn-default'
+        = f.submit 'Create', class: 'btn btn-primary'

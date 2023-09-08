@@ -4,8 +4,8 @@
 
   .well
     = form_with url: root_path, method: :get do |form|
-      = form.text_field :query
-      = form.submit "Search"
-
+      .input-group.mb-3
+        = form.text_field :query, class: 'form-control'
+        = form.submit 'Search', class: 'input-group-text'
     .text-right
       = link_to 'Ask Question', new_question_path, class: 'btn btn-primary'
