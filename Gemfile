@@ -26,6 +26,7 @@ gem 'jquery-rails'
 gem 'bootstrap-sass'
 gem 'sassc-rails'
 gem 'haml-rails'
+gem 'devise'
 
 group :development, :test do
   gem 'pry'
