@@ -1,19 +1,14 @@
-%nav.navbar.navbar-light.bg-light
-  .container
-    .row
-      .col-3
-        %a.navbar-brand Forum
-      .col-6
-        = form_with url: root_path, method: :get do |form|
-          .input-group
-            = form.text_field :query, class: 'form-control'
-            = form.submit 'Search', class: 'input-group-text'
-      .col-2
-        = current_user.email
-.text-right
-  %h3 Top Questions
-  = link_to 'Ask Question', new_question_path, class: 'btn btn-primary'
 
-  - @questions.each do |question|
-    = link_to question_path(question) do
-      %h4= question.title
+.container.px-2
+  %div.overflow-auto.mt-3
+    %h4.d-inline-block.float-start
+      Top Questions
+    %div.d-inline-block.float-end
+      = link_to 'Ask Question', new_question_path, class: 'btn btn-primary'
+  %div.mt-3
+    %table.table.table-striped
+      %tbody
+        - @questions.each do |question|
+          %tr
+            %td
+              = link_to question.title, question_path(question), class: 'text-decoration-none'

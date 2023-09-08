@@ -1,0 +1,31 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Forum
+    %meta{content: "width=device-width,initial-scale=1", name: "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_importmap_tags
+  %body
+    .container
+      %nav.navbar.navbar-light.bg-light.mb-3
+        .container-fluid
+          = link_to 'Forum', root_path, class: 'navbar-brand'
+          = form_with url: root_path, method: :get do |form|
+            .input-group
+              = form.text_field :query, class: 'form-control'
+              = form.submit 'Search', class: 'input-group-text'
+          - if user_signed_in?
+            %div
+              = link_to current_user.email, edit_user_registration_path, class: 'text-decoration-none'
+              |
+              = link_to 'log out', destroy_user_session_path, method: :delete, class: 'text-decoration-none'
+          - else
+            %div
+              = link_to 'Sign in', new_user_session_path, class: 'text-decoration-none'
+              |
+              = link_to 'Sign up', new_user_registration_path, class: 'text-decoration-none'
+
+      = yield
