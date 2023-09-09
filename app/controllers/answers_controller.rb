@@ -20,8 +20,8 @@ class AnswersController < ApplicationController
   end
 
   def update
-    @question = current_user.questions.find(params[:question_id])
-    @answer = @question.answers.find(params[:id])
+    @question = Question.find(params[:question_id])
+    @answer = current_user.answers.find(params[:id])
 
     if @answer.update(answer_params)
       redirect_to question_path(@question, answer_id: @answer.id)
