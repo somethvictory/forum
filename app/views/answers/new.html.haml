@@ -1,0 +1,12 @@
+%div.container
+  %h3.text-center
+    Answer
+  .well
+    = form_for [@question, @answer] do |f|
+      .mb-3
+        = f.label :body, class: 'form-label'
+        = f.text_area :body, class: 'form-control', rows: 10
+        %label.text-danger= @answer.errors[:body].first if @answer.errors[:body].any?
+        %br
+        = link_to 'Back', root_path, class: 'btn btn-default'
+        = f.submit 'Save', class: 'btn btn-primary'

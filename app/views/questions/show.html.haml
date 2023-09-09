@@ -17,7 +17,10 @@
     %hr
     %div{class: background_class}
       %h6= "By: #{answer.user.email}"
-      %p= answer.body
+      %p
+        = answer.body
+        - if answer.user == current_user
+          = link_to 'Edit', edit_question_answer_path(@question, answer), class: 'text-decoration-none'
 
 - if user_signed_in?
   = form_for [@question, @question.answers.new] do |f|
