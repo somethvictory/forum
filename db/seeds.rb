@@ -1,7 +1,18 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+questions = ['What is Javascript?', 'What is Ruby?', 'What is Ruby on Rails?', 'What is Java?']
+
+answers = {
+  javascript: [
+    'JavaScript is a high-level, dynamic, and versatile programming language primarily used for web development. It is an essential component of web browsers and enables interactivity and dynamic behavior on websites.',
+    ''
+  ],
+  ruby: [
+
+  ],
+  ruby_on_rails: [
+
+  ],
+  java: [
+
+  ]
+}
+
