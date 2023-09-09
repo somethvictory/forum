@@ -10,12 +10,18 @@
       = link_to 'Edit', edit_question_path(@question), class: 'd-inline-block float-end mt-3'
   %hr
   %p= @question.body
-  %h3 Answers
-  %hr
+  %h3= "#{@question.answers.size} Answers"
   - @question.answers.each do |answer|
-    %h5= "Answered By: #{answer.user&.email}"
-    %p= answer.body
+    - background_class = answer.id.to_s == params[:answer_id].to_s ? 'alert alert-info' : ''
+    %hr
+    %div{class: background_class}
+      %h6= "By: #{answer.user.email}"
+      %p= answer.body
 
--# = form_for @answer do |f|
--#   = f.label :body, class: 'form-label'
--#   = f.text_area :body, class: 'form-control'
+- @answer ||= @question.answers.new
+= form_for [@question, @question.answers.new] do |f|
+  = f.label :body, class: 'form-label'
+  = f.text_area :body, class: 'form-control'
+  %label.text-danger= @answer.errors[:body].first if @answer.errors[:body].any?
+  .action
+    = f.submit 'Answer', class: 'btn btn-primary'
