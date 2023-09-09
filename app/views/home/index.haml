@@ -3,8 +3,9 @@
   %div.overflow-auto.mt-3
     %h4.d-inline-block.float-start
       Top Questions
-    %div.d-inline-block.float-end
-      = link_to 'Ask Question', new_question_path, class: 'btn btn-primary'
+    - if user_signed_in?
+      %div.d-inline-block.float-end
+        = link_to 'Ask Question', new_question_path, class: 'btn btn-primary'
   %div.mt-3
     %table.table.table-striped
       %tbody
