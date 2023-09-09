@@ -14,4 +14,4 @@
         %label.text-danger= @question.errors[:body].first if @question.errors[:body].any?
         %br
         = link_to 'Back', root_path, class: 'btn btn-default'
-        = f.submit 'Create', class: 'btn btn-primary'
+        = f.submit 'Save', class: 'btn btn-primary'

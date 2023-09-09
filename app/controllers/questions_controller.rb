@@ -14,10 +14,29 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @question = Question.find(params[:id])
+
+    @answer = @question.answers.new
+  end
+
+  def edit
     @question = current_user.questions.find(params[:id])
+
+    render :new
+  end
+
+  def update
+    @question = current_user.questions.find(params[:id])
+
+    if @question.update(question_params)
+      redirect_to root_path, question_id: @question.id
+    else
+      render :new
+    end
   end
 
   private
+
   def question_params
     params.require(:question).permit(:title, :body)
   end

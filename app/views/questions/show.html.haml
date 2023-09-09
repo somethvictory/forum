@@ -4,11 +4,18 @@
       = link_to 'Home', root_path
     %li.breadcrumb-item.active{"aria-current" => "page"}= @question.title
 %div
-  %h1= @question.title
+  %div.overflow-auto
+    %h1.d-inline-block.float-start= @question.title
+    - if @question.user == current_user
+      = link_to 'Edit', edit_question_path(@question), class: 'd-inline-block float-end mt-3'
   %hr
   %p= @question.body
   %h3 Answers
   %hr
   - @question.answers.each do |answer|
-    %h5= "Answered By: #{answer.user.email}"
+    %h5= "Answered By: #{answer.user&.email}"
     %p= answer.body
+
+-# = form_for @answer do |f|
+-#   = f.label :body, class: 'form-label'
+-#   = f.text_area :body, class: 'form-control'
